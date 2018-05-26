@@ -50,3 +50,9 @@ aa=2024
 print(diaseg(dd,mm,aa))
 
 #########################################################################################
+
+# (3) Um programa recebe como entrada dois horarios (no formato de 12 horas)
+# e informa o numero de minutos que se passou entre eles.
+
+def minutos(h1,m1,p1,h2,m2,p2):
+    
