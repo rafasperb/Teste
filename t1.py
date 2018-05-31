@@ -61,9 +61,9 @@ def minutos(h1,m1,p1,h2,m2,p2):
     ms = 0
     hb = 0
 
-    if(h1 > 11 or h2 > 11):
+    if(h1 > 11 or h2 > 11 or h1 < 0 or h2 < 0):
         return -1
-    if(m1 > 59 or m2 > 59):
+    if(m1 > 59 or m2 > 59 or m1 < 0 or m2 < 0):
         return -1
 
     if(p1 == 'pm'):

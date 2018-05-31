@@ -135,6 +135,14 @@ class Testdiaseg(unittest.TestCase):
 
         result = t1.diaseg(31,12,2000)
         self.assertEqual(result, '1/1/2001')
+#########################################################
+
+class Testminutos(unittest.TestCase):
+
+    def test_horario1_(self):
+
+        result = t1.diaseg(0,1,2000)
+        self.assertEqual(result, -1)
 
 if __name__ == '__main__':
     unittest.main()
