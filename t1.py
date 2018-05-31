@@ -11,6 +11,9 @@ def bruto(nh , vh):
         return -1
     return nh * vh
 
+vh=0
+nh=0
+
 # vh = 190
 # nh = 10
 # print(bruto(nh,vh))
@@ -42,9 +45,9 @@ def diaseg(dd,mm,aa):
         return -1
     return dd, mm, aa
 
-# dd=31
-# mm=12
-# aa=2024
+# dd=0
+# mm=0
+# aa=0
 #
 # print(diaseg(dd,mm,aa))
 
