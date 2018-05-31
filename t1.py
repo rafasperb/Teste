@@ -43,7 +43,8 @@ def diaseg(dd,mm,aa):
 
     if(aa == 2025):
         return -1
-    return dd, mm, aa
+    buff=str(dd)+'/'+str(mm)+'/'+str(aa)
+    return buff
 
 # dd=0
 # mm=0
