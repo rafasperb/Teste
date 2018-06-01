@@ -116,11 +116,28 @@ def minutos(h1,m1,p1,h2,m2,p2):
             hb = hb-1
 
         hs = h2-h1
+        
+    if(p1 == 'pm' and p2 == 'am'):
+        if(m1 < m2):
+            ms = (60-m1)+m2
+            if(ms > 59):
+                ms = ms-60
+                hb = hb+1
+            hb = hb-1
+        if(m1 > m2):
+            ms = (60-m1)+m2
+            hb= hb-1
+        if(m1 == m2):
+            ms = 0
+        hs = (24-h1)+h2  
+        
+        
     hs = hs + hb
     minutos = (hs*60) + ms
-    # print(str(hs)+' '+str(ms)+' '+'minutos: '+str(minutos))
+    #print(str(hs)+' '+str(ms)+' '+'minutos: '+str(minutos))
+    return minutos
 
-# print(minutos(13,00,'pm',1,01,'pm'))
+#minutos(10,50,'am',10,55,'pm')
 
 #########################################################################################
 # (4) Analise a funcao descrita a seguir e, aplicando a tecnica de particionamento de classes
@@ -132,3 +149,53 @@ def minutos(h1,m1,p1,h2,m2,p2):
 #  diaSemana = True a mostra o dia da semana  diaSemana = False
 #  a nao mostra o dia da semana
 #########################################################################################
+    
+def nextdate(dia, mes, ano, diaSemana):
+    import datetime    
+    
+    if(dia < 1 or dia > 31):
+        return -1
+    if(mes < 1 or mes > 12):
+        return -1
+    if(ano < 1900 or ano > 2100):
+        return -1
+    if(diaSemana != 'True' and diaSemana != 'False'):
+        return-1
+        
+    dia=dia+1
+
+    if(dia == 32):
+        dia=1
+        mes=mes+1
+
+    if(mes == 13):
+        mes=1
+        ano=ano+1
+        if(ano == 2101):
+            return -1
+    day = datetime.datetime(ano,mes,dia)
+        
+    if( diaSemana == 'True'):
+        aux = datetime.datetime.weekday(day)
+        if(aux == 0):
+            diaS = ' - Segunda-Feira'
+        if(aux == 1):
+            diaS = ' - Terça-Feira'
+        if(aux == 2):
+            diaS = ' - Quarta-Feira'
+        if(aux == 3):
+            diaS = ' - Quinta-Feira'
+        if(aux == 4):
+            diaS = ' - Sexta-Feira'
+        if(aux == 5):
+            diaS = ' - Sábado'
+        if(aux == 6):
+            diaS = ' - Domingo'                  
+            
+        buff=str(dia)+'/'+str(mes)+'/'+str(ano)+diaS
+        return buff
+    if(diaSemana == 'False'):
+        buff=str(dia)+'/'+str(mes)+'/'+str(ano)
+        return buff 
+
+#print(nextdate(1,1,2100,'True'))    
