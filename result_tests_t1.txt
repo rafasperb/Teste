@@ -56,3 +56,7 @@ test_minutos1_menor_0 (__main__.Testminutos) ... ok
 test_minutos2_maior_59 (__main__.Testminutos) ... ok
 test_minutos2_menor_0 (__main__.Testminutos) ... ok
 
+----------------------------------------------------------------------
+Ran 57 tests in 0.005s
+
+OK
