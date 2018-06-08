@@ -26,3 +26,10 @@ def isAlerta(s):
             return 2
         if(radiacao > 1 or temperatura > 30):
             return 1
+
+s = 0
+t = 0
+r = 0 
+temperatura = 0
+radiacao = 0
+h = False
