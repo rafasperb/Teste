@@ -1,35 +1,43 @@
-def setH(s,h):
-    if(h == True):
-        s = 1 #sensor habilitado
-    if(h == False):
-        s = 0 #sensor desabilitado
+class Sensor:
+    def __init__(self, t, r, h):
+        self.temp = t
+        self.rad = r
+        self.hab = h
 
-def setTemp(s,t):
-    temperatura = t
+    def setH(self,h):
+        if(h == True):
+            self.hab = True #sensor habilitado
+        if(h == False):
+            self.hab = False #sensor desabilitado
 
-def setRad(s,r):
-    radiacao = r
+    def setTemp(self,t):
+        self.temp = t
 
-def isH(s):
-    if(s == 1):
-        return True
-    if(s == 0):
-        return False
+    def setRad(self,r):
+        self.rad = r
 
-def isAlerta(s):
-    if(s == 0):
-        return 0
-    if(s == 1):
-        if(radiacao > 7):
-            return 3
-        if(radiacao > 5 or temperatura > 40):
-            return 2
-        if(radiacao > 1 or temperatura > 30):
-            return 1
+    def isH(self):
+        if(self.hab == True):
+            return True
+        if(self.hab == False):
+            return False
 
-s = 0
-t = 0
-r = 0 
-temperatura = 0
-radiacao = 0
-h = False
+    def isAlerta(self):
+        if(self.hab == False):
+            return 0
+        if(self.hab == True):
+            if(self.rad > 7):
+                return 3
+            if(self.rad > 5 or self.temp > 40):
+                return 2
+            if(self.rad > 1 or self.temp > 30):
+                return 1
+
+S1 = Sensor(10,10,False)
+print(S1.temp)
+print(S1.rad)
+print(S1.hab)
+S1.setH(True)
+print(S1.hab)
+a = S1.isAlerta()
+print(a)
