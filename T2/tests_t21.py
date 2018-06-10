@@ -20,12 +20,6 @@ class TestSensor(unittest.TestCase):
         result = S.hab
         self.assertEqual(result, True)
 
-        S = t2.Sensor(10,15,True)
-        S.setH(False)
-        result = S.hab
-        self.assertEqual(result, False)
-
-
     def test_setTemp(self):
 
         S = t2.Sensor(10,15,False)
@@ -45,10 +39,6 @@ class TestSensor(unittest.TestCase):
         S = t2.Sensor(10,15,False)
         result = S.isH()
         self.assertEqual(result, False)
-
-        S = t2.Sensor(10,15,True)
-        result = S.isH()
-        self.assertEqual(result, True)
 
     def test_isAlerta(self):
 
