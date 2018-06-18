@@ -73,7 +73,7 @@ class TestSensor(unittest.TestCase):
         result = S1.isAlerta()
         self.assertEqual(result, None)
         
-        S1 = t2.Sensor(20,1,'blabla')
+        S1 = t2.Sensor(35,3,'blabla')
         result = S1.isAlerta()
         self.assertEqual(result, None)
 
