@@ -34,11 +34,11 @@ class Sensor:
             if(self.rad > 1 or self.temp > 30):
                 return 1
 
-# S1 = Sensor(10,10,False)
+#S1 = Sensor(10,10,False)
 # print(S1.temp)
 # print(S1.rad)
 # print(S1.hab)
 # S1.setH(True)
 # print(S1.hab)
 # a = S1.isAlerta()
-# print(a)
+#print(S1)
