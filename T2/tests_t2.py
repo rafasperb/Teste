@@ -11,8 +11,9 @@ class TestSensor(unittest.TestCase):
         result3 = S.hab
         self.assertEqual(result1, 10)
         self.assertEqual(result2, 15)
-        self.assertEqual(result3, False)
-
+        self.assertEqual(result3, False)  
+        
+        
     def test_setH(self):
 
         S = t2.Sensor(10,15,False)
@@ -24,7 +25,7 @@ class TestSensor(unittest.TestCase):
         S.setH(False)
         result = S.hab
         self.assertEqual(result, False)
-
+        
 
     def test_setTemp(self):
 
@@ -67,6 +68,14 @@ class TestSensor(unittest.TestCase):
         S1 = t2.Sensor(35,3,True)
         result = S1.isAlerta()
         self.assertEqual(result, 1)
+        
+        S1 = t2.Sensor(20,1,True)
+        result = S1.isAlerta()
+        self.assertEqual(result, None)
+        
+        S1 = t2.Sensor(20,1,'blabla')
+        result = S1.isAlerta()
+        self.assertEqual(result, None)
 
 if __name__ == '__main__':
     unittest.main()
