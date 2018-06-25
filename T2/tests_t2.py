@@ -1,4 +1,5 @@
 import t2
+import votador
 import unittest
 
 class TestSensor(unittest.TestCase):
@@ -11,9 +12,9 @@ class TestSensor(unittest.TestCase):
         result3 = S.hab
         self.assertEqual(result1, 10)
         self.assertEqual(result2, 15)
-        self.assertEqual(result3, False)  
-        
-        
+        self.assertEqual(result3, False)
+
+
     def test_setH(self):
 
         S = t2.Sensor(10,15,False)
@@ -25,7 +26,7 @@ class TestSensor(unittest.TestCase):
         S.setH(False)
         result = S.hab
         self.assertEqual(result, False)
-        
+
 
     def test_setTemp(self):
 
@@ -68,14 +69,71 @@ class TestSensor(unittest.TestCase):
         S1 = t2.Sensor(35,3,True)
         result = S1.isAlerta()
         self.assertEqual(result, 1)
-        
+
         S1 = t2.Sensor(20,1,True)
         result = S1.isAlerta()
         self.assertEqual(result, None)
-        
+
         S1 = t2.Sensor(35,3,'blabla')
         result = S1.isAlerta()
         self.assertEqual(result, None)
+
+    def test_Votador(self):
+        S1 = votador.Conf(15,10,True,50)
+        S2 = votador.Conf(15,10,True,50)
+        S3 = votador.Conf(16,10,True,90)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S3)
+
+        S1 = votador.Conf(15,10,True,75)
+        S2 = votador.Conf(15,10,True,90)
+        S3 = votador.Conf(16,10,True,80)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S1)
+
+        S1 = votador.Conf(15,10,True,50)
+        S2 = votador.Conf(16,10,True,90)
+        S3 = votador.Conf(15,10,True,60)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S2)
+
+        S1 = votador.Conf(15,10,True,50)
+        S2 = votador.Conf(16,10,True,90)
+        S3 = votador.Conf(15,10,True,80)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S1)
+
+        S1 = votador.Conf(15,10,True,90)
+        S2 = votador.Conf(16,10,True,60)
+        S3 = votador.Conf(16,10,True,60)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S1)
+
+        S1 = votador.Conf(15,10,True,50)
+        S2 = votador.Conf(16,10,True,90)
+        S3 = votador.Conf(16,10,True,60)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S2)
+
+        S1 = votador.Conf(15,10,True,95)
+        S2 = votador.Conf(16,10,True,90)
+        S3 = votador.Conf(17,10,True,60)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S1)
+
+        S1 = votador.Conf(15,10,True,90)
+        S2 = votador.Conf(16,10,True,96)
+        S3 = votador.Conf(17,10,True,60)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S2)
+
+        S1 = votador.Conf(15,10,True,95)
+        S2 = votador.Conf(16,10,True,90)
+        S3 = votador.Conf(17,10,True,97)
+        result = votador.Votador(S1,S2,S3)
+        self.assertEqual(result, S3)
+
+
 
 if __name__ == '__main__':
     unittest.main()

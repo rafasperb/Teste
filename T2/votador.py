@@ -1,67 +1,36 @@
 from t2 import Sensor
 from random import randint
 
-SS = []
-S1 = []
-S2 = []
-S3 = []
+class Conf(Sensor):
+    def __init__(self, t, r, h, c):
+        super().__init__(t,r,h)
+        self.conf = c
 
-S1.append(Sensor(6,10,False))
-S2.append(Sensor(10,10,False))
-S3.append(Sensor(9,10,False))
+def Votador(a,b,c):
 
-SS.append(S1)
-S1.append(randint(50, 100))
-SS.append(S2)
-S2.append(randint(50, 100))
-SS.append(S3)
-S3.append(randint(50, 100))
-
-
-i=0
-
-if(S1[0].temp == S2[0].temp):
-    print(S1[0].temp)
-else:
-    if(S1[0].temp == S3[0].temp):
-        print(S1[0].temp)
-    else:   
-         if(S2[0].temp == S3[0].temp):
-            print(S2[0].temp)
-         else:
-              if(S1[1] > S2[1] and S1[1] > S3[1]):
-                print(S1[0].temp)  
-              else:
-                   if(S2[1] > S1[1] and S2[1] > S3[1]):
-                     print(S2[0].temp)     
-                   else:
-                        if(S3[1] > S1[1] and S3[1] > S2[1]):
-                            print(S3[0].temp)                
-
-
-
-
-
-#for i in range(0,3):
-#    aux = (SS[i][0].temp * SS[i][1])/100
-#    SS[i].append(aux)#posição 2
-#
-#i=0
-#for i in range(0,3):
-#    #aux = (SS[i][0].temp - SS[i][2])
-#    aux = (8 - SS[i][2])
-#    SS[i].append(aux)#posição 3
-#
-#if(SS[0][3] < SS[1][3] and SS[0][3] < SS[2][3]):
-#    print("1")
-#
-#if(SS[1][3] < SS[0][3] and SS[1][3] < SS[2][3]):
-#    print("2")
-#    
-#if(SS[2][3] < SS[0][3] and SS[2][3] < SS[1][3]):
-#    print("3")        
-#
-#
-print(SS[0][1])
-print(SS[1][1])
-print(SS[2][1])
+    if(a.temp == b.temp and a.rad == b.rad):
+        if((c.conf - a.conf) > 20 and (c.conf - b.conf) > 20):
+            return c
+        else:
+            return a
+    else:
+        if(a.temp == c.temp and a.rad == c.rad):
+            if((b.conf - a.conf) > 20 and (b.conf - c.conf) > 20):
+                return b
+            else:
+                return a
+        else:
+            if(b.temp == c.temp and b.rad == c.rad):
+                if((a.conf - b.conf) > 20 and (a.conf - c.conf) > 20):
+                    return a
+                else:
+                    return b
+            else:
+                if(a.conf > b.conf and a.conf > c.conf):
+                    return a
+                else:
+                    if(b.conf > a.conf and b.conf > c.conf):
+                        return b
+                    else:
+                        if(c.conf > a.conf and c.conf > b.conf):
+                            return c
